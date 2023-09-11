@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const updatedHallConfigig = ticketInfo.hallConfig.replace(/selected/g, "taken");
 
 		request(
-			`event=sale_add&timeStamp=${ticketInfo.seancetimeStamp}&hallId=${ticketInfo.hallId}&seanceId=${ticketInfo.seanceId}&hallConfiguration=${updatedHallConfigig}`,
+			`event=sale_add&timestamp=${ticketInfo.seancetimestamp}&hallId=${ticketInfo.hallId}&seanceId=${ticketInfo.seanceId}&hallConfiguration=${updatedHallConfigig}`,
 			() => {}
 		);
 	}

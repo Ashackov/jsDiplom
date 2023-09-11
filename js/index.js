@@ -5,16 +5,16 @@ document.addEventListener("DOMContentLoaded", () => {
 	const dayNumbers = document.querySelectorAll(".page-nav__day-number");
 	const weekDays = document.querySelectorAll(".page-nav__day-week");
 	const currentTime = new Date();
-	const timeStampToday = currentTime.getTime();
+	const timestampToday = currentTime.getTime();
 	currentTime.setHours(0, 0, 0);
 
 	dayNumbers.forEach((dayNum, i) => {
 		const day = new Date(currentTime.getTime() + i * 24 * 60 * 60 * 1000);
-		const timeStamp = Math.trunc(day / 1000);
+		const timestamp = Math.trunc(day / 1000);
 		dayNum.innerHTML = `${day.getDate()}`;
 		weekDays[i].innerHTML = dayOfWeek[`${day.getDay()}`];
 		const dayLink = dayNum.parentNode;
-		dayLink.dataset.timeStamp = timeStamp;
+		dayLink.dataset.timestamp = timestamp;
 
 		dayLink.classList.remove("page-nav__day_weekend");
 		if (
@@ -89,24 +89,24 @@ document.addEventListener("DOMContentLoaded", () => {
 					.classList.remove("page-nav__day_chosen");
 				page.classList.add("page-nav__day_chosen");
 
-				let selectedDayTimeStamp = Number(event.target.dataset.timeStamp);
-				if (isNaN(selectedDayTimeStamp)) {
-					selectedDayTimeStamp = Number(
-						event.target.closest(".page-nav__day").dataset.timeStamp
+				let selectedDaytimestamp = Number(event.target.dataset.timestamp);
+				if (isNaN(selectedDaytimestamp)) {
+					selectedDaytimestamp = Number(
+						event.target.closest(".page-nav__day").dataset.timestamp
 					);
 				}
-				updateSeanceStatus(selectedDayTimeStamp);
+				updateSeanceStatus(selectedDaytimestamp);
 			})
 		);
 		const movieSeances = document.querySelectorAll(".movie-seances__time");
 
-		function updateSeanceStatus(selectedDayTimeStamp) {
+		function updateSeanceStatus(selectedDaytimestamp) {
 			movieSeances.forEach((movieSeance) => {
-				const timeStampSeanceDay = Number(movieSeance.dataset.seanceStart) * 60;
-				const timeStampSeance = selectedDayTimeStamp + timeStampSeanceDay;
-				const timeStampNow = timeStampToday / 1000;
-				movieSeance.dataset.seancetimeStamp = timeStampSeance;
-				if (timeStampSeance - timeStampNow > 0) {
+				const timestampSeanceDay = Number(movieSeance.dataset.seanceStart) * 60;
+				const timestampSeance = selectedDaytimestamp + timestampSeanceDay;
+				const timestampNow = timestampToday / 1000;
+				movieSeance.dataset.seancetimestamp = timestampSeance;
+				if (timestampSeance - timestampNow > 0) {
 					movieSeance.classList.remove("acceptin-button-disabled");
 				} else {
 					movieSeance.classList.add("acceptin-button-disabled");

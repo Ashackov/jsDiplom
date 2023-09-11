@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	priceStandart.innerHTML = ticketInfo.priceStandart;
 
 	request(
-		`event=get_hallConfig&timeStamp=${ticketInfo.seancetimeStamp}&hallId=${ticketInfo.hallId}&seanceId=${ticketInfo.seanceId}`,
+		`event=get_hallConfig&timestamp=${ticketInfo.seancetimestamp}&hallId=${ticketInfo.hallId}&seanceId=${ticketInfo.seanceId}`,
 		(response) => {
 			console.log(response);
 			if (response) {

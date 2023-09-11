@@ -11,7 +11,7 @@ function renderTicket(ticketInfo) {
 	document.querySelector(".ticket__start").innerHTML = ticketInfo.seanceTime;
 	document.querySelector(".ticket__chairs").innerHTML = places.join(", ");
 
-	const strDate = formatDate(ticketInfo.seancetimeStamp);
+	const strDate = formatDate(ticketInfo.seancetimestamp);
 	const textQR = generateQRText(ticketInfo, places, strDate);
 
 	const qr = QRCreator(textQR, {
@@ -20,8 +20,8 @@ function renderTicket(ticketInfo) {
 	document.querySelector(".ticket__info-qr").append(qr.result);
 }
 
-function formatDate(timeStamp) {
-	const date = new Date(Number(timeStamp * 1000));
+function formatDate(timestamp) {
+	const date = new Date(Number(timestamp * 1000));
 	return date.toLocaleDateString("ru-RU", {
 		day: "2-digit",
 		month: "2-digit",
